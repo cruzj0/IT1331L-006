@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Animal Information</title>
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+            th, td {
+                border: 1px solid black;
+                padding: 8px;
+                text-align: center;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Animal Information</h1>
+        <div id="animal-table"></div>
+
+        <!-- Adds html content via script which constructs a table with headers -->
+        <script>
+            //declare html to be inserted, declared value indicates the use of tables
+            let tableHTML = '<table>';
+            //add headers to table
+            tableHTML += '<tr><th>Animal ID</th><th>Animal Name</th><th>Owner Name</th><th>Weight</th><th>Age</th><th>Age Bracket</th></tr>';
+            
+            //seed the table with a couple of "animal" objects
+            const animals = [
+                { id: 1, name: "Fluffy", owner: "Alice", weight: 12, age: 3 },
+                { id: 2, name: "Max", owner: "Bob", weight: 20, age: 5 },
+                { id: 3, name: "Coco", owner: "Jules", weight: 16, age: 9 },
+                { id: 4, name: "Pie", owner: "Jules", weight: 4, age: 6 },
+                { id: 5, name: "Yuki", owner: "Samuel", weight: 10, age: 17 },
+                { id: 6, name: "Yama", owner: "Stephen", weight: 11, age: 19 },
+                { id: 7, name: "Law", owner: "Federico", weight: 20, age: 23 },
+                { id: 8, name: "Bubba", owner: "Amelia", weight: 16, age: 16 },
+                { id: 9, name: "Peppy", owner: "Asta", weight: 8, age: 11 },
+                { id: 10, name: "Diting", owner: "Guinaifen", weight: 9, age: 11 },
+                { id: 11, name: "Chichi", owner: "Sofia", weight: 6, age: 12 },
+                { id: 12, name: "Numby", owner: "Topaz", weight: 20, age: 14 },
+                { id: 13, name: "Gary", owner: "SpongeBob", weight: 5, age: 0.8 },
+                { id: 14, name: "Pikachu", owner: "Ash", weight: 13, age: 0.6 },
+                { id: 15, name: "Rocinante", owner: "Mortica", weight: 16, age: 0.3 },
+                { id: 16, name: "Flow", owner: "Muelsyse", weight: 16, age: 0.5 },
+            ];
+
+            //loops to seed the tables with the data
+            for(let i = 0; i < animals.length; i++){
+                    tableHTML += "<tr><td>" + animals[i].id + "</td><td>" + animals[i].name + "</td><td>" + animals[i].owner + "</td><td>" + animals[i].weight + "</td><td>" + animals[i].age + "</td><td>" + getAgeBracket(animals[i].age) + "</td></tr>";
+            }
+
+            //determine age bracket function
+            function getAgeBracket(age){
+                if (age <= 0.9){
+                    return "Puppy";}
+                else if (age > 0.9 && age <= 10)
+                    return "Adult";
+                else if (age > 10 && age <= 15)
+                    return "Senior";
+                else if (age > 15)
+                    return "Geriatric";
+            }
+
+            //append to the to-be-added html the closing statement for the table
+            tableHTML += '</table>';
+            //insert the html inside whatever container has the returned id value
+            document.getElementById('animal-table').innerHTML = tableHTML;
+        </script>
+
+    </body>
+</html>
